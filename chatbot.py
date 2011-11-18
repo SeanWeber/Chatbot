@@ -13,10 +13,13 @@ def main():
 def talk(a):
     a = a.capitalize()
     wordList = a.split(" ")
+    
     if (wordList[0] == "What") and (wordList[1] == "are" or "is"):
         wordDefinition(wordList[-1])
-    if a == "goodbye":
+    elif a == "goodbye":
         endConversation()
+    else:
+        print "yep"
     talk(raw_input())
 
 def endConversation():
@@ -24,12 +27,14 @@ def endConversation():
     exit()
 
 def wordDefinition(b):
+    answer = "I don't know"
     for line in dictionary:
         defList = line.split()
-        if b in defList[1] and defList[2] == "Noun":
-            s = str(defList[4:])
-            print "Its " + "".join(c for c in s if c.isalnum() or c.isspace())
-            break
+        if (b == defList[1]) and (defList[2] == "Noun"):
+            s = str(defList[4:])    #puts everything from the 4th line onward into a string
+            answer = "Its " + "".join(c for c in s if c.isalnum() or c.isspace())  #Removes symbols
+            break        
+    print answer
 
 if __name__ == '__main__':
     main()
