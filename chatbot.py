@@ -1,7 +1,24 @@
+#    Python Chatbot
+#    Copyright (C) 2011  Sean Weber, Wesley Wiser
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 import urllib
 import zipfile
 import string
 import random
+import aiml
 
 dictionary = zipfile.ZipFile("dictionary.zip", "r").open("dictionary.txt", "r")
 #   Dictionary format:
@@ -16,6 +33,10 @@ topic = "Nothing"
 
 def main():
     print "Hello"
+    #k = aiml.Kernel()
+    #k.learn("aiml.xml")
+    #while True: print k.respond(raw_input("> "))
+    
     talk(raw_input())
 
 def talk(a):
@@ -24,51 +45,63 @@ def talk(a):
 
     if a in greeting:
         print greeting[random.randint(0,4)]
+        
     elif a in farewell:
         endConversation()
+        
     elif a in thanks:
         print "No problem"
+        
     elif a == "What are you thinking about":
         print topic
+        
     elif (wordList[0] == "What") and (wordList[1] == "are" or "is"):
         wordDefinition(wordList[-1])
+        
     elif a.lower() == "what is your name?":
-    		print "My name is Bob. Who's asking?"
+        print "My name is Bob. Who's asking?"
+        
     elif "weather" in wordList:
         discussWeather()
+        
     elif "i think" in a.lower():
-    		print "Why do you think that?"
+        print "Why do you think that?"
+        
     elif a.lower().split(" ")[0] == "yes":
-    		print "That's good"
+        print "That's good"
+        
     elif a.lower().split(" ")[0] == "no":
-    		print "Really?"
+        print "Really?"
+        
     elif isStatement(a):
-    		print questions[random.randint(0, 3)].format(getNoun(a))
+        print questions[random.randint(0, 3)].format(getNoun(a))
+        
     elif a.endswith("?"):
-		  if a.lower().startswith("why"):
-		  	print "I don't know, how{0}".format(getWhyQuestionChunk(a.lower()))
-		  elif "are you a" in a.lower():
-		  	print ["yes", "no"][random.randint(0, 1)]
-		  else:
-		  	print "I don't know, {0}".format(a.lower())
+        if a.lower().startswith("why"):
+            print "I don't know, how{0}".format(getWhyQuestionChunk(a.lower()))
+        elif "are you a" in a.lower():
+            print ["yes", "no"][random.randint(0, 1)]
+        else:
+            print "I don't know, {0}".format(a.lower())
+            
     else:
         print ["yep", "really?"][random.randint(0, 1)]
         
     talk(raw_input())
     
 def getWhyQuestionChunk(s):
-		chunk = s.lower()
+    chunk = s.lower()
 		
-		if chunk.startswith("why"):
-			chunk = chunk.replace("why", "", 1)
+    if chunk.startswith("why"):
+        chunk = chunk.replace("why", "", 1)
 			
-		if chunk.startswith("do"):
-			chunk = chunk.replace("do", "", 1)
+    if chunk.startswith("do"):
+        chunk = chunk.replace("do", "", 1)
 			
-		if chunk.startswith("are"):
-			chunk = chunk.replace("are", "", 1)
-			print "hit"
-		return chunk
+    if chunk.startswith("are"):
+        chunk = chunk.replace("are", "", 1)
+        print "hit"
+    return chunk
     
 def isStatement(s):
 		first = s.split(" ")[0].lower()
@@ -78,16 +111,16 @@ def isStatement(s):
 		return a
 		
 def getNoun(s):
-		words = s.split(" ")
+    words = s.split(" ")
 		
-		#get the first noun in the sentence
-		for word in words:
-			lower = word.lower()
-			if lower != "a" and lower != "an" and lower != "the" and lower != "i" and lower != "he" and lower != "you" and lower != "she" and lower != "we":
-				for line in dictionary:
-					defList = line.split()
-					if(lower == defList[1].lower() and (defList[2] == "Noun" or defList[2] == "Proper")): return word #"Proper Noun"s are also nouns
-		return "that"
+    #get the first noun in the sentence
+    for word in words:
+        lower = word.lower()
+        if lower != "a" and lower != "an" and lower != "the" and lower != "i" and lower != "he" and lower != "you" and lower != "she" and lower != "we":
+            for line in dictionary:
+                defList = line.split()
+                if(lower == defList[1].lower() and (defList[2] == "Noun" or defList[2] == "Proper")): return word #"Proper Noun"s are also nouns
+    return "that"
 
 def endConversation():
     print farewell[random.randint(0,3)]
@@ -110,7 +143,7 @@ def discussWeather():
         if "Current Conditions" in line:
             conditions = line.split(":")
             conditions = conditions[1].split("-")
-            print "Its pretty nice." + conditions[0]
+            print "Its pretty nice. Its " + conditions[0]
         
 if __name__ == '__main__':
     main()
