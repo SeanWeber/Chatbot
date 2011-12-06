@@ -725,4 +725,5 @@
 <category><pattern>_ VIBE *</pattern><template> <srai>VIBE</srai></template></category>      
 <category><pattern>_ VIBES  </pattern><template> <srai>VIBES</srai></template></category>      
 <category><pattern>_ VIBES *</pattern><template> <srai>VIBES</srai></template></category> 
+<category><pattern>*</pattern><template> You make no sense</template></category>   
 </aiml>

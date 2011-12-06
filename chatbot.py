@@ -31,15 +31,16 @@ questions = ["What do you think about {0}?", "I don't really like {0}. Do you?",
 
 topic = "Nothing"
 
+k = aiml.Kernel()
+k.learn("aiml.xml")
+
 def main():
     print "Hello"
-    #k = aiml.Kernel()
-    #k.learn("aiml.xml")
-    #while True: print k.respond(raw_input("> "))
-    
+
     talk(raw_input())
 
 def talk(a):
+
     a = a.capitalize()
     wordList = a.split(" ")
 
@@ -67,14 +68,14 @@ def talk(a):
     elif "i think" in a.lower():
         print "Why do you think that?"
         
-    elif a.lower().split(" ")[0] == "yes":
-        print "That's good"
+    #elif a.lower().split(" ")[0] == "yes":
+    #    print "That's good"
         
-    elif a.lower().split(" ")[0] == "no":
-        print "Really?"
+    #elif a.lower().split(" ")[0] == "no":
+    #    print "Really?"
         
-    elif isStatement(a):
-        print questions[random.randint(0, 3)].format(getNoun(a))
+    #elif isStatement(a):
+    #    print questions[random.randint(0, 3)].format(getNoun(a))
         
     elif a.endswith("?"):
         if a.lower().startswith("why"):
@@ -85,7 +86,12 @@ def talk(a):
             print "I don't know, {0}".format(a.lower())
             
     else:
-        print ["yep", "really?"][random.randint(0, 1)]
+        b = a.upper()
+        k.respond(b)
+        print k.respond(a)
+
+            
+        #print ["yep", "really?"][random.randint(0, 1)]
         
     talk(raw_input())
     
@@ -104,11 +110,11 @@ def getWhyQuestionChunk(s):
     return chunk
     
 def isStatement(s):
-		first = s.split(" ")[0].lower()
+    first = s.split(" ")[0].lower()
 		
-		a = first != "what" and first != "how" and first != "why" and first != "who" and first != "where" and not s.endswith("?")
-		#print a 
-		return a
+    a = first != "what" and first != "how" and first != "why" and first != "who" and first != "where" and not s.endswith("?")
+    #print a 
+    return a
 		
 def getNoun(s):
     words = s.split(" ")
