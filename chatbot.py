@@ -32,7 +32,7 @@ questions = ["What do you think about {0}?", "I don't really like {0}. Do you?",
 topic = "Nothing"
 
 k = aiml.Kernel()
-k.learn("aiml.xml")
+k.learn("aiml2.xml")
 
 def main():
     print "Hello"
@@ -56,11 +56,8 @@ def talk(a):
     elif a == "What are you thinking about":
         print topic
         
-    elif (wordList[0] == "What") and (wordList[1] == "are" or "is"):
+    elif (wordList[0] == "What") and (wordList[1] == "are" or "is") and (wordList[2] != "your"):
         wordDefinition(wordList[-1])
-        
-    elif a.lower() == "what is your name?":
-        print "My name is Bob. Who's asking?"
         
     elif "weather" in wordList:
         discussWeather()

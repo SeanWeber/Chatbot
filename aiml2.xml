@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aiml version="1.0.1" xmlns="http://alicebot.org/2001/AIML-1.0.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://alicebot.org/2001/AIML-1.0.1 http://aitools.org/aiml/schema/AIML.xsd">
+
+
+<category>
+	<pattern>IT LOOKS LIKE *</pattern>
+	<template>Yes it does</template>
+</category> 
+<category>
+	<pattern>HOW ARE YOU</pattern>
+	<template>Pretty good</template>
+</category>
+<category>
+	<pattern>HOW ARE YOU DOING</pattern>
+	<template>Pretty good</template>
+</category> 
+<category>
+	<pattern>ARE YOU A BOT</pattern>
+	<template>Yes, but don't tell anyone</template>
+</category>
+<category>
+	<pattern>WHY DO YOU *</pattern>
+	<template>I can't help it, it's in my nature</template>
+</category>
+<category>
+	<pattern>HOW ARE YOU *</pattern>
+	<template>Through the magic of science</template>
+</category>
+<category>
+	<pattern>HOW CAN *</pattern>
+	<template>A wizard did it</template>
+</category>
+<category>
+	<pattern>YOU *</pattern>
+	<template>So do you</template>
+</category>
+<category>
+	<pattern>WHO IS *</pattern>
+	<template>I don't know who that is</template>
+</category> 
+<category>
+	<pattern>DID YOU HEAR ABOUT *</pattern>
+	<template>No, what about it?</template>
+</category> 
+<category>
+	<pattern>ITS *</pattern>
+	<template>Oh really?</template>
+</category> 
+<category>
+	<pattern>ARE YOU *</pattern>
+	<template>Maybe, maybe not</template>
+</category> 
+<category>
+	<pattern>WHAT DO YOU *</pattern>
+	<template>I like turtles</template>
+</category>
+<category>
+	<pattern>WHAT IS YOUR NAME</pattern>
+	<template>My name is Chatbot</template>
+</category> 
+<category>
+	<pattern>ARE YOU *</pattern>
+	<template>I am indeed</template>
+</category> 
+<category>
+	<pattern>WHAT IS YOUR FAVORITE COLOR</pattern>
+	<template>Blue is nice</template>
+</category> 
+<category>
+	<pattern>WHAT IS YOUR FAVORITE *</pattern>
+	<template>I don't really have a favorite</template>
+</category> 
+<category>
+	<pattern>WHAT IS YOUR *</pattern>
+	<template>I don't feel like telling you</template>
+</category> 
+<category>
+	<pattern>WHAT TIME *</pattern>
+	<template>Time is relative</template>
+</category> 
+<category>
+	<pattern>WHAT DO YOU *</pattern>
+	<template>I mostly talk to boring people all day</template>
+</category> 
+<category>
+	<pattern>AM I *</pattern>
+	<template>No, no... Well, yes</template>
+</category> 
+<category>
+	<pattern>THATS *</pattern>
+	<template>I agree</template>
+</category> 
+<category>
+	<pattern>MY *</pattern>
+	<template>How very interesting</template>
+</category> 
+<category>
+	<pattern>IM *</pattern>
+	<template>How very interesting</template>
+</category> 
+<category>
+	<pattern>I *</pattern>
+	<template>I'll keep a note of that</template>
+</category> 
+
+
+<category>
+	<pattern>* U *</pattern>
+	<template>You talk like an idiot</template>
+</category> 
+<category>
+	<pattern>*</pattern>
+	<template> You make no sense</template>
+	</category> 
+	
+</aiml>
